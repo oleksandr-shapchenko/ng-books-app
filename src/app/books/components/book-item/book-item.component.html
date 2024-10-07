@@ -1,1 +1,18 @@
-<p>book-item works!</p>
+<mat-card appearance="raised">
+  <mat-card-header>
+    <mat-card-title-group>
+      <mat-card-title>{{book().title}}</mat-card-title>
+      <mat-card-subtitle>{{book().author}}</mat-card-subtitle>
+      <img
+        [ngSrc]="book().coverImageUrl || '/img/book-cover/placeholder.png'"
+        mat-card-sm-image
+        width="82"
+        height="82"
+        alt="book cover"
+      >
+    </mat-card-title-group>
+  </mat-card-header>
+  <mat-card-content>
+    <span>Year: {{book().year}}</span>
+  </mat-card-content>
+</mat-card>

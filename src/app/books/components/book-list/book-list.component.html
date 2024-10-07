@@ -1,1 +1,11 @@
-<p>book-list works!</p>
+<cdk-virtual-scroll-viewport
+  itemSize="150"
+  minBufferPx="300"
+  maxBufferPx="600"
+  class="books-viewport"
+>
+  <app-book-item
+    *cdkVirtualFor="let book of books()"
+    [book]="book"
+  ></app-book-item>
+</cdk-virtual-scroll-viewport>

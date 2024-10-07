@@ -1,0 +1,18 @@
+@import '../styles/variables';
+
+header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+
+  .mat-toolbar {
+    background: #d7e3ff;
+    color: #005cbb;
+  }
+}
+
+main {
+  padding: $main-padding-top $main-padding-side $main-padding-bottom;
+}

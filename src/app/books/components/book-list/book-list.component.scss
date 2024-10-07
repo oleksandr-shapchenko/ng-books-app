@@ -1,0 +1,10 @@
+@import '../../../../styles/variables';
+
+.books-viewport {
+  height: calc(100dvh - $main-padding-top - $main-padding-bottom);
+  width: 100%;
+}
+
+app-book-item {
+  margin-bottom: 12px;
+}
