@@ -3,6 +3,7 @@ import { AsyncPipe, NgOptimizedImage } from '@angular/common';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MatButton } from '@angular/material/button';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 import { BooksStore } from '../../store/books.store';
 import { Book } from '../../models/book.interface';
@@ -15,7 +16,8 @@ import { BookEditDialogComponent } from '../../components/book-edit-dialog/book-
   imports: [
     AsyncPipe,
     MatButton,
-    NgOptimizedImage
+    NgOptimizedImage,
+    MatProgressSpinner
   ],
   templateUrl: './book-details.component.html',
   styleUrl: './book-details.component.scss',
