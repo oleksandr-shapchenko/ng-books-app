@@ -1,0 +1,33 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+
+  $img-width: 230px;
+  $img-height: 230px;
+  $media-sm: 500px;
+
+  @media(max-width: $media-sm) {
+    grid-template-columns: 1fr;
+    grid-template-rows: calc($img-height + 20px) 1fr 1fr;
+  }
+
+  .img-container {
+    width: $img-width;
+    height: $img-height;
+    position: relative;
+    margin-left: auto;
+    aspect-ratio: 1 / 1;
+
+    @media(max-width: $media-sm) {
+      grid-row: 1 / 2;
+      margin: 0;
+    }
+  }
+
+  .actions {
+    margin-top: 20px;
+    display: flex;
+    column-gap: 8px;
+  }
+}

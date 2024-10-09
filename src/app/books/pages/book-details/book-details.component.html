@@ -1,0 +1,24 @@
+<div *ngIf="book$ | async as book" class="container">
+  <div class="left">
+    <h2 class="title">{{ book.title }}</h2>
+    <h4 class="subtitle">{{ book.author }}</h4>
+
+    <p>Year: {{ book.year }}</p>
+    <p>Publisher: {{ book.publisher }}</p>
+    <p>{{ book.description }}</p>
+  </div>
+
+  <div class="img-container">
+    <img
+      [ngSrc]="book.coverImageUrl || '/img/book-cover/placeholder.png'"
+      priority
+      fill
+      alt="book cover"
+    >
+  </div>
+
+  <div class="actions">
+    <button mat-button class="tertiary-button" (click)="delete()">Delete</button>
+    <button mat-flat-button (click)="openEditDialog(book)">Edit</button>
+  </div>
+</div>

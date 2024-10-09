@@ -17,4 +17,11 @@ export class BooksApiService {
       map(() => BOOKS)
     );
   }
+
+  getBookById(id: number) {
+    return of(null).pipe(
+      delay(1000),
+      map(() => BOOKS.find(book => book.id === id)!)
+    )
+  }
 }

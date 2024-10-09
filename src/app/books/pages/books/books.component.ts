@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs';
 
@@ -17,9 +17,5 @@ import { Book } from '../../models/book.interface';
   styleUrl: './books.component.scss'
 })
 export default class BooksComponent {
-  books$: Observable<Book[]>;
-
-  constructor (private booksApi: BooksApiService) {
-    this.books$ = this.booksApi.getAllBooks()
-  }
+  books$: Observable<Book[]> = inject(BooksApiService).getAllBooks();
 }
