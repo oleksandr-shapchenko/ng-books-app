@@ -1,0 +1,14 @@
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input
+    matInput
+    [value]="query()"
+    placeholder="Enter book's title"
+    (keyup)="queryChange.emit($any($event.target).value)"
+  >
+</mat-form-field>
+
+<mat-button-toggle-group [ngModel]="order()" (ngModelChange)="orderChange.emit($event)">
+  <mat-button-toggle value="asc">Ascending</mat-button-toggle>
+  <mat-button-toggle value="desc">Descending</mat-button-toggle>
+</mat-button-toggle-group>

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { RouterLink } from '@angular/router';
 
@@ -15,5 +15,5 @@ import { BookItemComponent } from '../book-item/book-item.component';
 })
 export class BookListComponent {
   readonly books = input.required<Book[]>();
-  readonly bookItemClicked = output<Book>();
+  readonly isLoading = input.required<boolean>();
 }

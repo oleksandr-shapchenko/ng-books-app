@@ -1,10 +1,16 @@
 @import '../../../../styles/variables';
 
 .books-viewport {
-  height: calc(100dvh - $main-padding-top - $main-padding-bottom);
+  height: calc(100dvh - $main-padding-top - $main-padding-bottom - $books-filter-height);
   width: 100%;
 }
 
 app-book-item {
   margin-bottom: 12px;
+}
+
+.no-items {
+  display: flex;
+  justify-content: center;
+  color: darkgray;
 }

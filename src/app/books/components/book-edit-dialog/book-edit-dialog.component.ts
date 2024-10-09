@@ -46,4 +46,8 @@ export class BookEditDialogComponent {
     coverImage: [null]
   });
   readonly errorMessage = signal('This field is required');
+
+  getDialogResult() {
+    return { ...this.form.value, id: this.book!.id };
+  }
 }

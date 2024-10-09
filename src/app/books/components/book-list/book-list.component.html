@@ -1,12 +1,20 @@
-<cdk-virtual-scroll-viewport
-  itemSize="150"
-  minBufferPx="300"
-  maxBufferPx="600"
-  class="books-viewport"
->
-  <app-book-item
-    *cdkVirtualFor="let book of books()"
-    [book]="book"
-    routerLink="/books/{{ book.id }}"
-  ></app-book-item>
-</cdk-virtual-scroll-viewport>
+@if(!isLoading()) {
+  <cdk-virtual-scroll-viewport
+    itemSize="150"
+    minBufferPx="300"
+    maxBufferPx="600"
+    class="books-viewport"
+  >
+    @if(books().length) {
+      <app-book-item
+        *cdkVirtualFor="let book of books()"
+        [book]="book"
+        routerLink="/books/{{ book.id }}"
+      />
+    } @else {
+      <div class="no-items">No items for current search criteria</div>
+    }
+  </cdk-virtual-scroll-viewport>
+} @else {
+  <div>Loading...</div>
+}

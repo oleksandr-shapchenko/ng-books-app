@@ -1,12 +1,11 @@
-import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
-import { AsyncPipe, NgIf, NgOptimizedImage } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject, Input, Signal } from '@angular/core';
+import { AsyncPipe, NgOptimizedImage } from '@angular/common';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MatButton } from '@angular/material/button';
-import { Observable } from 'rxjs';
 
+import { BooksStore } from '../../store/books.store';
 import { Book } from '../../models/book.interface';
-import { BooksApiService } from '../../services/books-api.service';
 import { BookEditDialogComponent } from '../../components/book-edit-dialog/book-edit-dialog.component';
 
 
@@ -15,7 +14,6 @@ import { BookEditDialogComponent } from '../../components/book-edit-dialog/book-
   standalone: true,
   imports: [
     AsyncPipe,
-    NgIf,
     MatButton,
     NgOptimizedImage
   ],
@@ -24,21 +22,18 @@ import { BookEditDialogComponent } from '../../components/book-edit-dialog/book-
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export default class BookDetailsComponent {
-  booksApi = inject(BooksApiService);
-  dialog = inject(MatDialog);
-  router = inject(Router);
+  readonly store = inject(BooksStore);
+  private readonly dialog = inject(MatDialog);
+  private readonly router = inject(Router);
 
   @Input() set id(bookId: string) {
-    this.book$ = this.booksApi.getBookById(Number(bookId));
+    this.book = this.store.getBookById(Number(bookId));
   }
 
-  book$!: Observable<Book>;
+  book!: Signal<Book>;
 
-  delete(): void {
-    // TODO: implement delete logic
-    // this.booksApi.deleteBook(this.book$.id).subscribe(() => {
-    //   // Handle successful deletion
-    // });
+  deleteBook(): void {
+    this.store.deleteBook(this.book().id);
 
     this.router.navigate(['books']);
   }
@@ -48,8 +43,7 @@ export default class BookDetailsComponent {
 
     dialogRef.afterClosed().subscribe((result?: Book) => {
       if (result) {
-        // TODO: implement update logic
-
+        this.store.updateBook(result);
       }
     });
   }

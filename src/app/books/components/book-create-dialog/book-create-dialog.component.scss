@@ -1,0 +1,28 @@
+.title {
+  display: flex;
+  align-items: center;
+
+  .mat-icon {
+    margin-left: auto;
+    cursor: pointer;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  .form-fields {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 8px;
+    margin-bottom: 12px;
+
+    @media(max-width: 500px) {
+      flex-direction: column;
+    }
+  }
+}

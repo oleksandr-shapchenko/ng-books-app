@@ -1,1 +1,14 @@
-<app-book-list [books]="(books$ | async)!"></app-book-list>
+<div class="actions">
+  <app-books-filter
+    [query]="store.filter.query()"
+    [order]="store.filter.order()"
+    (queryChange)="store.updateQuery($event)"
+    (orderChange)="store.updateOrder($event)"
+  />
+  <button mat-flat-button (click)="openCreateDialog()">Add</button>
+</div>
+
+<app-book-list
+  [books]="store.sortedBooks()"
+  [isLoading]="store.isLoading()"
+/>

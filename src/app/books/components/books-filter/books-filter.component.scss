@@ -1,0 +1,22 @@
+@import '../../../../styles/variables';
+
+$toggle-buttons-width: 270px;
+
+:host {
+  height: $books-filter-height;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 14px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-button-toggle-group {
+  width: $toggle-buttons-width;
+  height: fit-content;
+  margin-bottom: 20px;
+}
