@@ -1,0 +1,12 @@
+<input
+  type="file"
+  class="hidden"
+  [id]="'file-upload-' + id"
+  (change)="onFileChange($any($event.target))"
+>
+
+<p class="control-label">{{label()}}</p>
+<label [for]="'file-upload-' + id" #labelRef>
+  <button mat-button (click)="labelRef.click()">Choose File</button>
+</label>
+<span class="file-name">{{ selectedFile ? selectedFile.name : 'no file selected' }}</span>
