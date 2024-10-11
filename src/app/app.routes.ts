@@ -3,11 +3,7 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: 'books',
-    loadComponent: () => import('./books/pages/books/books.component')
-  },
-  {
-    path: 'books/:id',
-    loadComponent: () => import('./books/pages/book-details/book-details.component')
+    loadChildren: () => import('./books/books.routes').then(r => r.routes)
   },
   { path: '**', redirectTo: 'books' }
 ];

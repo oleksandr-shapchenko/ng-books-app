@@ -11,16 +11,17 @@ type BooksState = {
   books: Book[];
   isLoading: boolean;
   filter: { query: string; order: 'asc' | 'desc' };
+  isInitialized: boolean;
 }
 
 const initialState: BooksState = {
   books: [],
   isLoading: false,
   filter: { query: '', order: 'asc' },
+  isInitialized: false,
 }
 
 export const BooksStore = signalStore(
-  { providedIn: 'root' },
   withState(initialState),
   withComputed(({ books, filter }) => ({
     booksCount: computed(() => books().length),
@@ -41,6 +42,9 @@ export const BooksStore = signalStore(
     },
     updateOrder(order: 'asc' | 'desc'): void {
       patchState(store, (state) => ({ filter: { ...state.filter, order } }));
+    },
+    initialize() {
+      if (!store.isInitialized()) this.loadByQuery('');
     },
     createBook: rxMethod<Book>(
       pipe(
@@ -98,7 +102,7 @@ export const BooksStore = signalStore(
             tapResponse({
               next: (books) => patchState(store, { books }),
               error: console.error,
-              finalize: () => patchState(store, { isLoading: false })
+              finalize: () => patchState(store, { isLoading: false, isInitialized: true })
             })
           )
         })
