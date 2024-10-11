@@ -22,6 +22,7 @@ const initialState: BooksState = {
 }
 
 export const BooksStore = signalStore(
+  { providedIn: 'root' },
   withState(initialState),
   withComputed(({ books, filter }) => ({
     booksCount: computed(() => books().length),
