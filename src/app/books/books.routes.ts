@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 
 import BooksRootComponent from './pages/books-root/books-root.component';
-import { BooksStore } from './store/books.store';
 
 const children: Routes = [
   {
@@ -15,6 +14,6 @@ const children: Routes = [
 ];
 
 export const routes: Routes = [
-  { path: '', component: BooksRootComponent, children, providers: [BooksStore] },
+  { path: '', component: BooksRootComponent, children },
   { path: '**', redirectTo: '' }
 ];
