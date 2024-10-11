@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/ng-books-app",
+            "outputPath": "docs/ng-books-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
