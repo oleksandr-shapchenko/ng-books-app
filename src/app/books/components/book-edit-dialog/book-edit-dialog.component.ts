@@ -6,13 +6,14 @@ import {
   MatDialogContent,
   MatDialogTitle
 } from '@angular/material/dialog';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 
 import { Book } from '../../models/book.interface';
+import { BookForm } from '../../models/book-form.interface';
 import { FileUploadComponent } from '../../../shared/components/file-upload/component/file-upload.component';
 
 @Component({
@@ -44,7 +45,7 @@ export class BookEditDialogComponent {
     publisher: [this.book.publisher, [Validators.required]],
     description: [this.book.description, [Validators.required]],
     coverImage: [null]
-  });
+  }) as FormGroup<BookForm>;
   readonly errorMessage = signal('This field is required');
 
   getDialogResult() {

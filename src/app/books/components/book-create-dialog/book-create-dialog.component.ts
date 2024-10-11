@@ -9,9 +9,10 @@ import {
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { FileUploadComponent } from '../../../shared/components/file-upload/component/file-upload.component';
+import { BookForm } from '../../models/book-form.interface';
 
 @Component({
   selector: 'app-book-create-dialog',
@@ -41,7 +42,7 @@ export class BookCreateDialogComponent {
     publisher: [null, [Validators.required]],
     description: [null, [Validators.required]],
     coverImage: [null]
-  });
+  }) as FormGroup<BookForm>;
   readonly errorMessage = signal('This field is required');
 
   getDialogResult() {
